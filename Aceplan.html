@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>ACE Plan - Study App</title>
+	<style>
+	body {
+		font-family: Arial, sans-serif;
+		margin: 0;
+		background-color: #f5f9ff;
+		color: #333;
+	}
+	header {
+		background-color: #0077cc;
+		color: white;
+		padding: 1em;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	header img {
+		height: 40px;
+	}
+	nav {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		background-color: #ffffff;
+		border-top: 1px solid #ddd;
+		display: flex;
+		justify-content: space-around;
+		padding: 0.5em 0;
+	}
+	nav button {
+		background: none;
+		border: none;
+		font-size: 1.5em;
+	}
+	.container {
+		padding: 1em;
+	}
+	.card {
+		background: white;
+		border-radius: 8px;
+		box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+		padding: 1em;
+		margin-bottom: 1em;
+	}
+	.hidden {
+		display: none;
+	}
+	.progress-bar {
+		width: 80%;
+		height: 10px;
+		background-color: #ddd;
+		margin: 20px auto;
+		border-radius: 5px;
+		overflow: hidden;
+	}
+	.progress-fill {
+		width: 60%;
+		height: 100%;
+		background-color: #0077cc;
+	}
+	.tip-box {
+		background: #e6f2ff;
+		padding: 10px;
+		border-left: 4px solid #0077cc;
+		width: 80%;
+		margin: 0 auto;
+		border-radius: 4px;
+	}
+	input, textarea, select, button.create-btn {
+		display: block;
+		margin: 10px 0;
+		padding: 10px;
+		width: 100%;
+		max-width: 400px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+	button.create-btn {
+		background-color: #0077cc;
+		color: white;
+		font-weight: bold;
+	}
+	</style>
+</head>
+<body>
+	<header>
+		<img src="compass_logo.png" alt="ACE Plan Logo" />
+		<h1>Welcome, User</h1>
+		<div class="profile">👤</div>
+	</header>
+
+	<div id="home" class="container">
+		<div class="card">Next Assignment: Math Homework - Due Friday</div>
+		<div class="card">Upcoming Event: Study Group - Saturday</div>
+	</div>
+
+	<div id="calendar" class="container hidden">
+		<h2>Calendar</h2>
+		<div class="card">📅 April 10 - Group Project Due</div>
+		<div class="card">📅 April 15 - Exam</div>
+	</div>
+
+	<div id="add" class="container hidden">
+		<h2>Create New Task</h2>
+		<form>
+			<input type="text" placeholder="Task Title" />
+			<input type="date" />
+			<select>
+				<option>Reminder: Off</option>
+				<option>Reminder: On</option>
+			</select>
+			<button type="button" class="create-btn">Create Task</button>
+		</form>
+	</div>
+
+	<div id="flashcards" class="container hidden">
+		<h2>Flashcards</h2>
+		<form>
+			<input type="text" placeholder="Enter a Question" />
+			<textarea placeholder="Enter the Answer"></textarea>
+			<button type="button" class="create-btn">Add Flashcard</button>
+		</form>
+	</div>
+
+	<div id="loading" class="container hidden">
+		<div class="progress-bar">
+			<div class="progress-fill"></div>
+		</div>
+		<div class="tip-box">💡Tip: Break study time into 25-minute sessions using the Pomodoro method!</div>
+	</div>
+
+	<nav>
+		<button onclick="showScreen('home')" title="Tasks">✔️</button>
+		<button onclick="showScreen('calendar')" title="Calendar">📅</button>
+		<button onclick="showScreen('add')" title="Add">➕</button>
+		<button onclick="showScreen('flashcards')" title="Flashcards">📖</button>
+		<button onclick="showScreen('loading')" title="Loading">☰</button>
+	</nav>
+
+	<script>
+		function showScreen(screenId) {
+			const sections = ['home', 'calendar', 'add', 'flashcards', 'loading'];
+			sections.forEach(id => {
+				document.getElementById(id).classList.add('hidden');
+			});
+			document.getElementById(screenId).classList.remove('hidden');
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
